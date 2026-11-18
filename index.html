@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#c8b8d9">
+<title>Cierre | Como un micelio, crecemos juntos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --lavender:#c8b8d9;
+    --lilac:#e0d2e8;
+    --purple:#8c719d;
+    --ink:#44302c;
+    --soil:#231913;
+    --gold:#E2BA64;
+    --cream:#f7f0e6;
+    --font-title:'Cormorant Garamond',serif;
+    --font-body:'Quicksand',sans-serif;
+}
+
+*,*::before,*::after {margin:0;padding:0;box-sizing:border-box;}
+html {scroll-behavior:smooth;scroll-padding-top:30px;}
+body {font-family:var(--font-body);color:var(--ink);background:var(--soil);overflow-x:hidden;}
+h1,h2,h3 {font-family:var(--font-title);font-weight:500;}
+a {color:inherit;text-decoration:none;}
+img {display:block;max-width:100%;}
+
+.paper-texture {position:relative;isolation:isolate;}
+.paper-texture::after {
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:5;opacity:.13;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+}
+
+/* PORTADA */
+.hero {
+    min-height:100svh;position:relative;overflow:hidden;display:flex;justify-content:center;align-items:center;text-align:center;
+    background:radial-gradient(ellipse at 15% 25%,rgba(255,255,255,.55),transparent 40%),radial-gradient(ellipse at 85% 60%,rgba(164,139,185,.3),transparent 45%),#c8b8d9;
+    isolation:isolate;animation:backgroundMove 16s ease-in-out infinite alternate;
+}
+.hero::before {
+    content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,#79604d 0%,#a38a91 18%,transparent 65%);opacity:.6;z-index:-1;
+}
+@keyframes backgroundMove {from {background-position:0% 0%;} to {background-position:100% 100%;}}
+
+.hero-content {position:relative;z-index:4;padding:30px 20px;animation:appear 2s ease both,contentFloat 7s ease-in-out 2s infinite;}
+@keyframes appear {from {opacity:0;transform:translateY(30px);} to {opacity:1;transform:translateY(0);}}
+@keyframes contentFloat {0%,100% {translate:0 0;} 50% {translate:0 -8px;}}
+
+.hero-kicker {font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:#311738;margin-bottom:20px;}
+.hero h1 {font-size:clamp(4rem,11vw,9rem);letter-spacing:.09em;line-height:.9;color:#4c394f;text-shadow:2px 3px 0 rgba(255,255,255,.22);}
+.hero-subtitle {font-family:var(--font-title);font-size:clamp(1.5rem,3.5vw,2.8rem);font-style:italic;color:#2a1530;margin-top:32px;}
+.hero-decoration {font-size:1rem;color:#75617b;letter-spacing:.4em;margin-top:30px;}
+
+.floating-mushroom {
+    position:absolute;width:var(--size,95px);opacity:var(--opacity,.8);
+    animation:floatMushroom var(--duration,8s) ease-in-out infinite;animation-delay:var(--delay,0s);
+    z-index:2;filter:drop-shadow(2px 5px 5px rgba(64,42,55,.12));will-change:transform;transition:filter .5s ease;
+}
+.floating-mushroom:hover {filter:drop-shadow(0 10px 12px rgba(70,40,80,.3));}
+.mushroom-1 {top:12%;left:9%;--size:110px;--duration:9s;}
+.mushroom-2 {top:23%;right:10%;--size:85px;--duration:11s;--delay:-3s;}
+.mushroom-3 {bottom:17%;left:17%;--size:75px;--duration:7s;--delay:-2s;}
+.mushroom-4 {bottom:20%;right:17%;--size:125px;--duration:10s;--delay:-4s;}
+.mushroom-5 {top:53%;left:4%;--size:60px;--duration:8s;--delay:-1s;}
+.mushroom-6 {top:9%;right:35%;--size:65px;--duration:12s;--delay:-5s;}
+
+@keyframes floatMushroom {0%,100% {transform:translateY(0) rotate(-3deg);} 50% {transform:translateY(-22px) rotate(4deg);}}
+.mushroom-art {width:100%;height:100%;}
+
+/* ENCABEZADOS */
+.section-heading {text-align:center;margin-bottom:65px;position:relative;z-index:2;}
+.section-heading .eyebrow {font-size:.7rem;letter-spacing:.35em;color:#806987;text-transform:uppercase;margin-bottom:12px;}
+.section-heading h2 {font-size:clamp(3rem,6vw,5.2rem);color:#493a50;transition:letter-spacing 1s ease;}
+.heading-flourish {color:#987ba2;font-size:1.4rem;margin-top:12px;}
+
+/* CONCLUSIONES */
+.conclusions {
+    position:relative;padding:110px 7% 130px;
+    background:radial-gradient(ellipse at 15% 10%,#e6d9eb,transparent 55%),radial-gradient(ellipse at 90% 90%,#c9b8d5,transparent 50%),#d9cbe0;
+    overflow:hidden;
+}
+.conclusion-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1250px;margin:auto;position:relative;z-index:2;}
+.conclusion-card {
+    position:relative;padding:42px 32px;min-height:290px;
+    background:radial-gradient(ellipse at 0% 0%,rgba(173,140,192,.32),transparent 40%),radial-gradient(ellipse at 100% 100%,rgba(192,161,201,.28),transparent 42%),#fbf8f1;
+    border-radius:43% 12% 38% 13% / 12% 35% 13% 34%;box-shadow:4px 9px 24px rgba(71,46,75,.10);
+    transition:transform .5s ease,box-shadow .5s ease;overflow:hidden;
+}
+.conclusion-card:nth-child(2) {transform:translateY(30px);}
+.conclusion-card:nth-child(3) {border-radius:13% 40% 14% 36% / 35% 13% 34% 12%;}
+.conclusion-card:hover {transform:translateY(-9px) rotate(-1deg);box-shadow:5px 16px 30px rgba(71,46,75,.2);}
+.conclusion-card:nth-child(2):hover {transform:translateY(15px) rotate(1deg);}
+.card-number {font-family:var(--font-title);font-size:3.5rem;color:#b69abf;line-height:1;margin-bottom:15px;}
+.conclusion-card h3 {font-size:2rem;color:#57415d;margin-bottom:15px;}
+.conclusion-card p {font-size:.93rem;line-height:1.9;color:#70616f;}
+
+/* GALERÍA */
+.gallery {max-width:1150px;margin:110px auto 0;}
+.gallery-heading {font-size:2.5rem;text-align:center;color:#55445a;margin-bottom:35px;}
+.gallery-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.gallery-item {background:#f7f0e7;padding:12px 12px 35px;box-shadow:2px 7px 19px rgba(54,37,55,.14);transform:rotate(-2deg);transition:transform .4s ease;overflow:hidden;}
+.gallery-item:nth-child(2) {transform:rotate(2deg);}
+.gallery-item:nth-child(3) {transform:rotate(-1deg);}
+.gallery-item:hover {transform:translateY(-7px) rotate(0);}
+.gallery-item img {width:100%;aspect-ratio:4/3;object-fit:cover;background:#d8c9dc;transition:transform .8s cubic-bezier(.2,.7,.2,1);}
+.gallery-item:hover img {transform:scale(1.08);}
+.gallery-caption {font-family:var(--font-title);text-align:center;font-size:1.3rem;margin-top:13px;color:#68556d;}
+
+/* CRÉDITOS (Ajustado a 4 columnas para 7 integrantes) */
+.team {position:relative;overflow:hidden;padding:110px 6% 180px;background:radial-gradient(ellipse at 50% 0%,#d9c8e0,transparent 65%),#bdaacb;}
+.team-grid {display:grid;grid-template-columns:repeat(4,1fr);gap:35px 25px;max-width:1300px;margin:auto;position:relative;z-index:3;}
+.team-card {
+    text-align:center;padding:28px 19px 25px;
+    background:radial-gradient(ellipse at 20% 0%,rgba(179,148,192,.22),transparent 55%),#f9f5ee;
+    border-radius:46% 42% 13% 14% / 13% 14% 12% 12%;box-shadow:3px 8px 22px rgba(56,39,55,.12);
+    transition:transform .5s ease;animation:teamFloat 6s ease-in-out infinite;
+}
+.team-card:nth-child(even) {animation-duration:7s;animation-direction:reverse;}
+.team-card:hover {transform:translateY(-10px) rotate(-1deg);}
+@keyframes teamFloat {0%,100% {translate:0 0;} 50% {translate:0 -7px;}}
+.team-card h3 {font-size:1.8rem;color:#5d4861;margin-bottom:21px;}
+.team-photo {
+    width:145px;height:145px;margin:0 auto 20px;border-radius:50%;overflow:hidden;
+    background:radial-gradient(circle,#d5c3d9,#9d87a8);border:5px solid #e5d8e6;box-shadow:0 4px 15px rgba(60,40,65,.15);
+}
+.team-photo img {width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+.team-card:hover .team-photo img {transform:scale(1.08);}
+.team-card p {min-height:58px;font-size:.85rem;line-height:1.7;color:#796c76;margin-bottom:18px;}
+.team-card a {display:inline-block;font-size:.85rem;font-weight:700;color:#886a96;border-bottom:1px solid #bda7c6;padding-bottom:3px;transition:color .3s;}
+.team-card a:hover {color:#49344f;}
+
+/* TIERRA Y MICELIO */
+.living-earth {
+    position:relative;min-height:950px;margin-top:-100px;padding-top:150px;overflow:hidden;isolation:isolate;
+    background:radial-gradient(ellipse at 15% 8%,#70503a,transparent 35%),radial-gradient(ellipse at 85% 15%,#493126,transparent 40%),radial-gradient(ellipse at 45% 80%,#332219,transparent 65%),#231913;
+}
+.earth-surface {
+    position:absolute;height:190px;left:-5%;right:-5%;top:-100px;
+    border-radius:45% 55% 0 0 / 45% 50% 0 0;
+    background:radial-gradient(ellipse at 50% 100%,#8b6650,transparent 68%),#9b7895;
+    opacity:.65;filter:blur(9px);
+}
+.earth-title {position:relative;z-index:4;text-align:center;color:#e8d8c2;padding:30px 20px;}
+.earth-title h2 {font-size:clamp(2.5rem,6vw,4.7rem);animation:earthGlow 5s ease-in-out infinite;}
+.earth-title p {font-size:.9rem;letter-spacing:.18em;color:#c4a982;margin-top:12px;}
+@keyframes earthGlow {0%,100% {text-shadow:0 0 5px rgba(226,186,100,0);} 50% {text-shadow:0 0 22px rgba(226,186,100,.35);}}
+
+.roots-container {position:absolute;inset:70px 0 0;width:100%;height:100%;z-index:1;}
+.roots-svg {width:100%;height:100%;overflow:visible;}
+.root {
+    fill:none;stroke:#805c43;stroke-width:3;stroke-linecap:round;opacity:.7;transform-origin:center;
+    animation:rootBreath 8s ease-in-out infinite alternate;
+}
+.root.thick {stroke:#a27a51;stroke-width:7;opacity:.65;}
+.root.medium {stroke:#986d4d;stroke-width:4;}
+.root.gold {
+    stroke:var(--gold);stroke-width:2;stroke-dasharray:7 25;stroke-linecap:round;
+    filter:url(#goldGlow);opacity:.9;animation:goldenFlow 5s linear infinite;
+}
+@keyframes goldenFlow {to {stroke-dashoffset:-320;}}
+@keyframes rootBreath {
+    0% {transform:translateX(-2px) scaleY(.995);}
+    50% {transform:translateX(2px) scaleY(1.008);}
+    100% {transform:translateX(-1px) scaleY(1);}
+}
+
+/* FOOTER */
+footer {
+    position:relative;z-index:4;padding:60px 20px 35px;text-align:center;
+    background:radial-gradient(ellipse at 50% 0%,#513b2c,transparent 70%),#231913;color:#d9c3a2;
+}
+.footer-flourish {font-size:1.8rem;color:var(--gold);margin-bottom:15px;}
+footer h2 {font-size:clamp(2rem,5vw,3.5rem);font-style:italic;margin-bottom:20px;}
+footer p {font-size:.78rem;letter-spacing:.1em;color:#ad9374;margin-bottom:24px;}
+.back-top {
+    display:inline-block;margin-top:15px;padding:13px 28px;border:1px solid rgba(226,186,100,.6);
+    border-radius:40px;color:var(--gold);font-size:.85rem;font-weight:600;transition:.35s ease;
+}
+.back-top:hover {background:var(--gold);color:#231913;transform:translateY(-4px);}
+
+/* RESPONSIVE */
+@media(max-width:1000px) {
+    .team-grid {grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:700px) {
+    .mushroom-1 {left:2%;width:75px;}
+    .mushroom-2 {right:2%;width:65px;}
+    .mushroom-3 {left:5%;}
+    .mushroom-4 {right:4%;width:85px;}
+    .mushroom-5 {display:none;}
+    .mushroom-6 {right:30%;width:50px;}
+    .conclusions {padding:80px 7%;}
+    .conclusion-grid {grid-template-columns:1fr;gap:25px;}
+    .conclusion-card {min-height:auto;transform:none;border-radius:35px 15px 35px 15px;}
+    .gallery-grid {grid-template-columns:1fr;max-width:420px;margin:auto;gap:25px;}
+    .team {padding:80px 5% 140px;}
+    .team-grid {grid-template-columns:repeat(2,1fr);gap:20px 14px;}
+    .team-card {padding:23px 12px;}
+    .living-earth {min-height:800px;margin-top:-75px;}
+    .roots-container {inset:80px -40% 0;width:180%;}
+}
+@media(max-width:380px) {
+    .team-grid {grid-template-columns:1fr;}
+    .hero h1 {font-size:3.6rem;}
+}
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+
+<body id="inicio">
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="watercolor-mushroom" viewBox="0 0 150 160">
+        <path d="M62 80 C65 105 54 125 59 143 Q75 150 91 142 C95 120 84 103 88 80Z" fill="#e6d4c2" opacity=".95"/>
+        <path d="M68 92 Q74 110 69 138" stroke="#b59a8b" stroke-width="3" fill="none" opacity=".6"/>
+        <path d="M13 82 C17 48 47 18 82 21 C117 18 143 48 143 82 C111 99 43 101 13 82Z" fill="currentColor" opacity=".82"/>
+        <path d="M19 79 C43 66 109 64 138 79" stroke="#fff1dc" stroke-width="4" fill="none" opacity=".55"/>
+        <path d="M25 84 Q76 111 132 84" stroke="#6e5065" stroke-width="2" fill="none" opacity=".4"/>
+        <ellipse cx="49" cy="49" rx="10" ry="6" fill="#fff2e5" opacity=".7"/>
+        <ellipse cx="103" cy="43" rx="8" ry="5" fill="#fff2e5" opacity=".55"/>
+        <circle cx="76" cy="34" r="5" fill="#fff2e5" opacity=".65"/>
+    </symbol>
+</svg>
+
+<section class="hero paper-texture" aria-label="Portada del cierre">
+    <div class="floating-mushroom mushroom-1" style="color:#9879a7"><svg class="mushroom-art" viewBox="0 0 150 160"><use href="#watercolor-mushroom"/></svg></div>
+    <div class="floating-mushroom mushroom-2" style="color:#b97978"><svg class="mushroom-art" viewBox="0 0 150 160"><use href="#watercolor-mushroom"/></svg></div>
+    <div class="floating-mushroom mushroom-3" style="color:#8b9670"><svg class="mushroom-art" viewBox="0 0 150 160"><use href="#watercolor-mushroom"/></svg></div>
+    <div class="floating-mushroom mushroom-4" style="color:#c59a5a"><svg class="mushroom-art" viewBox="0 0 150 160"><use href="#watercolor-mushroom"/></svg></div>
+    <div class="floating-mushroom mushroom-5" style="color:#a18bb2"><svg class="mushroom-art" viewBox="0 0 150 160"><use href="#watercolor-mushroom"/></svg></div>
+    <div class="floating-mushroom mushroom-6" style="color:#a67b72"><svg class="mushroom-art" viewBox="0 0 150 160"><use href="#watercolor-mushroom"/></svg></div>
+
+    <div class="hero-content">
+        <p class="hero-kicker">Un viaje de aprendizajes compartidos</p>
+        <h1>CIERRE</h1>
+        <p class="hero-subtitle">Como un micelio,<br>crecemos juntos</p>
+        <div class="hero-decoration">✳ · ❀ · ✳</div>
+    </div>
+</section>
+
+<section class="conclusions paper-texture" id="conclusiones">
+    <div class="section-heading">
+        <p class="eyebrow"></p>
+        <h2>Conclusiones</h2>
+        <div class="heading-flourish">❧ ✿ ❧</div>
+    </div>
+
+    <div class="conclusion-grid">
+        <article class="conclusion-card">
+            <div class="card-number">01</div>
+            <h3>Aprender juntos</h3>
+            <p>Durante esta practica desarrollamos una habilidad de comunicacion mas amplia sobre todo con nuestros compañeros que integran la comunidad de Arte Digital, y todo esto con solo compartirnos cartas anonimas y agregando nuestra personalidad en ellas, fue tanta la emocion de ser esto algo nuevo para nosotros que comenzamos a regalarnos peluches, dibujos, dulces y artesanias que hizo esta experiancia aun mas interesante.</p>
+        </article>
+        <article class="conclusion-card">
+            <div class="card-number">02</div>
+            <h3>Conectar ideas</h3>
+            <p>Descubrimos que tenemos muchas cosas en comun mas de lo que esperabamos, desde gustos musicales, arte, peliculas, materias y muchas mas, es muy interesante saber que no estamos solos en este mundo y que podemos formar una comunidad y darnos la oportunidad de conocer y aprender cosas nuevas a traves de nuestros compañeros</p>
+        </article>
+        <article class="conclusion-card">
+            <div class="card-number">03</div>
+            <h3>Seguir creciendo</h3>
+            <p>Este proyecto compartido hizo que desarrollaramos una conexion amplia que con el tiempo cada vez se ira fortaleciendo al punto de que podamos hacer equipo con diversos proyectos que surgiran mas adelante, uniendo ideas, conocimientos, de diversos intereses </p>
+        </article>
+    </div>
+
+    <div class="gallery">
+        <h3 class="gallery-heading">Fragmentos de nuestro recorrido</h3>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="img/CONLUSIONES 1.jpg" alt="Primera imagen de las conclusiones" loading="lazy">
+                <p class="gallery-caption">Nuestro comienzo</p>
+            </div>
+            <div class="gallery-item">
+                <img src="img/CONCLUSIONES 2.jpg" alt="Segunda imagen de las conclusiones" loading="lazy">
+                <p class="gallery-caption">Lo que descubrimos</p>
+            </div>
+            <div class="gallery-item">
+                <img src="img/" alt="Tercera imagen de las conclusiones" loading="lazy">
+                <p class="gallery-caption">Lo que compartimos</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team paper-texture" id="creditos">
+    <div class="section-heading">
+        <p class="eyebrow">Las raíces que hicieron posible este proyecto</p>
+        <h2>Créditos y redes</h2>
+        <div class="heading-flourish">❧ ✿ ❧</div>
+    </div>
+
+    <!-- 7 ESPACIOS PARA CRÉDITOS Y REDES -->
+    <div class="team-grid">
+        <article class="team-card">
+            <h3>DIANA</h3>
+            <div class="team-photo"><img src="img/diana.jpg" alt="Integrante 1" loading="lazy"></div>
+            <p>PORTADA Y BIENVENIDA</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@DIARIRAMY]</a>
+        </article>
+
+        <article class="team-card">
+            <h3>ANDRES</h3>
+            <div class="team-photo"><img src="img/andres.jpg" alt="Integrante 2" loading="lazy"></div>
+            <p>DESCRIPCIÓN, OBJETIVO Y CONTEXTO</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@VIVENEBRI</a>
+        </article>
+
+        <article class="team-card">
+            <h3>KAREN</h3>
+            <div class="team-photo"><img src="img/karen.jpg" alt="Integrante 3" loading="lazy"></div>
+            <p>MIEMBROS</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@GOETIAX17]</a>
+        </article>
+
+        <article class="team-card">
+            <h3>IRVING</h3>
+            <div class="team-photo"><img src="img/irving.jpg" alt="Integrante 4" loading="lazy"></div>
+            <p>REGISTRO</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@SPINO ACUATIC</a>
+        </article>
+
+        <article class="team-card">
+            <h3>ANGEL</h3>
+            <div class="team-photo"><img src="img/angel.jpg" alt="Integrante 5" loading="lazy"></div>
+            <p>JARDIN INTERACTIVO</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@USAGENTCRAWLER]</a>
+        </article>
+
+        <article class="team-card">
+            <h3>ALESS</h3>
+            <div class="team-photo"><img src="img/alessandra.jpg" alt="Integrante 6" loading="lazy"></div>
+            <p>SONIDO Y MÚSICA</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@ARTESANDRE_FLORES</a>
+        </article>
+
+        <article class="team-card">
+            <h3>AMELIE</h3>
+            <div class="team-photo"><img src="img/Amelie.jpg" alt="Integrante 7" loading="lazy"></div>
+            <p>ENLACES Y CIERRE</p>
+            <a href="#" target="_blank" rel="noopener noreferrer">@MEDIUM</a>
+        </article>
+    </div>
+</section>
+
+<section class="living-earth" aria-label="Ilustración de raíces vivas">
+    <div class="earth-surface"></div>
+    <div class="earth-title">
+        <h2>Todo está conectado</h2>
+        <p>BAJO LA TIERRA, LAS IDEAS SIGUEN CRECIENDO</p>
+    </div>
+
+    <div class="roots-container">
+        <svg class="roots-svg" viewBox="0 0 1400 1000" preserveAspectRatio="xMidYMin slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <filter id="goldGlow" x="-100%" y="-100%" width="300%" height="300%">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <g class="root thick">
+                <path d="M700 0 C680 120 750 180 620 280 S480 430 510 550 S340 750 280 1000"/>
+                <path d="M700 0 C750 120 670 220 820 330 S900 490 840 640 S1020 820 1080 1000"/>
+                <path d="M690 80 C520 170 470 260 380 340 S300 510 150 600"/>
+                <path d="M720 100 C900 160 1000 240 1100 330 S1200 510 1380 580"/>
+            </g>
+
+            <g class="root medium">
+                <path d="M620 280 C540 300 520 400 420 440 S280 550 230 720"/>
+                <path d="M620 280 C650 390 720 430 670 540 S600 690 560 850"/>
+                <path d="M510 550 C430 530 380 600 340 680 S280 820 220 900"/>
+                <path d="M820 330 C940 360 970 450 1040 500 S1150 620 1180 780"/>
+            </g>
+
+            <g class="root gold">
+                <path d="M700 0 C680 120 750 180 620 280 S480 430 510 550 S340 750 280 1000"/>
+                <path d="M700 0 C750 120 670 220 820 330 S900 490 840 640 S1020 820 1080 1000"/>
+            </g>
+        </svg>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-flourish">❧ ✿ ❧</div>
+    <h2>Crecemos juntos</h2>
+    <p>GRACIAS POR FORMAR PARTE DE ESTE RECORRIDO</p>
+    <a href="#inicio" class="back-top">Volver arriba ↑</a>
+</footer>
+
+</body>
+</html>
